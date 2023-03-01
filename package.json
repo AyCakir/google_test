@@ -1,0 +1,33 @@
+{
+  "name": "google_test",
+  "version": "1.0.0",
+  "description": "webdriverio javascript cucumber",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "wdio": "wdio run ./wdio.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AyCakir/google_test.git"
+  },
+  "keywords": [
+    "webdriverio",
+    "javascript",
+    "cucumber"
+  ],
+  "author": "ayse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AyCakir/google_test/issues"
+  },
+  "homepage": "https://github.com/AyCakir/google_test#readme",
+  "devDependencies": {
+    "@wdio/cli": "^8.4.0",
+    "@wdio/cucumber-framework": "^8.4.0",
+    "@wdio/local-runner": "^8.4.0",
+    "@wdio/spec-reporter": "^8.4.0",
+    "chromedriver": "^110.0.0",
+    "wdio-chromedriver-service": "^8.1.1"
+  }
+}
