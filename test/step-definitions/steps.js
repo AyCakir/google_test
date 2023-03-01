@@ -20,13 +20,19 @@ Then(/^I see the title is "Google"$/, async ()=>{
     await expect(browser).toHaveTitleContaining(expectedTitle);
 
 });
-/*
-When(/^I login with (\w+) and (.+)$/, async (username, password) => {
-    await LoginPage.login(username, password)
+
+When(/^I type (\w+) in input box$/, async (text) => {
+
+    const input = await $('input[name="q"]');
+    await input.setValue(text);
+    await browser.pause(10000);
+
+
+
+
 });
 
-Then(/^ (.*)$/, async () => {
+//Then(/^ (.*)$/, async () => {
    
-});
 
-*/
+//});

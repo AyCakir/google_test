@@ -4,11 +4,11 @@ Feature: google test
 
     Given I navigate to google page
     Then I see the title is "Google"
-    # When I type <keyword> in input box 
-    # And  I click on search button  
+    When I type <keyword> in input box 
+    #And  I click on search button  
     # Then I should get <url>
 
-    # Examples:
-    #   | keyword  |   url                    | 
-     # | aws      |  https://aws.amazon.com/ |
+     Examples:
+     | keyword  |   url                    | 
+     | aws      |  https://aws.amazon.com/ |
     # | aptitude |                       | 
