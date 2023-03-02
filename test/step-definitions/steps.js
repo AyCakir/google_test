@@ -1,6 +1,5 @@
 const { Given, When, Then, } = require('@wdio/cucumber-framework');
 
-
 //const pages = {
    // login: LoginPage
 //}
@@ -53,9 +52,11 @@ await searchbtn.waitForClickable({ timeout: 10000 });
 })
 */
 
-/*Then(/^I should get (\w+)$/, async (title) => {
-   const elemnt =await $("//span[text()='" + title +"']");
-    await elemnt.waitForExist({ timeout: 5000 });
-    await expect(elemnt).toBeExisting();
+Then(/^I should get (\w+)$/, async (expectedUrl) => {
+  // const elemnt =await $("//span[text()='" + title +"']");
+  //await .waitForExist({ timeout: 5000 });
+
+  const url = await browser.getUrl();
+  await expect(url).toHaveUrl(expectedUrl);
 });
-*/
+

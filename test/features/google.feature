@@ -7,9 +7,9 @@ Feature: google test
     When I type <SearchItem> in input box 
     #When  I click on search button  
     When Click on the first search result
-    #Then I should get <title>
+    Then I should get <ExpectedURL>
 
      Examples:
-     | SearchItem         |   title                             | 
-     | aws                |  Amazon.com                            |
-     | aptitudeglobal     |  Aptitude Global                        | 
+     | SearchItem         |   ExpectedURL                           | 
+     | aws                | https://aws.amazon.com/                 |
+     | aptitudeglobal     | https://www.aptitudeglobal.com/         | 
