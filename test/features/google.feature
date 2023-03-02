@@ -6,10 +6,10 @@ Feature: google test
     Then I see the title is "Google"
     When I type <SearchItem> in input box 
     #When  I click on search button  
-    When Click on the first search result
+    And Click on the first search result
     Then I should get <ExpectedURL>
 
      Examples:
      | SearchItem         |   ExpectedURL                           | 
      | aws                | https://aws.amazon.com/                 |
-     | aptitudeglobal     | https://www.aptitudeglobal.com/         | 
+     | aptitude global     | https://www.aptitudeglobal.com/       | 
