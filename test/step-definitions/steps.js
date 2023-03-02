@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { Given, When, Then, } = require('@wdio/cucumber-framework');
 
 
 //const pages = {
@@ -12,27 +12,41 @@ Given(/^I navigate to google page$/, async () => {
     
 });
 Then(/^I see the title is "Google"$/, async ()=>{
-    await browser.pause(10000);
+    await browser.pause(5000);
     const actualTitle =  await browser.getTitle();
     console.log(actualTitle);
    
     const expectedTitle = "Google";
     await expect(browser).toHaveTitleContaining(expectedTitle);
 
+
 });
 
 When(/^I type (\w+) in input box$/, async (text) => {
-
+    
     const input = await $('input[name="q"]');
     await input.setValue(text);
-    await browser.pause(10000);
+
+
 
 
 
 
 });
 
-//Then(/^ (.*)$/, async () => {
-   
 
-//});
+
+When (/^I click on search button$/, async() => {
+      
+const searchbtn = await $('.UUbT9 input[name="btnK"]');
+await searchbtn.waitForClickable({ timeout: 10000 });
+ await searchbtn.click();
+ await browser.pause(10000);
+
+})
+
+Then(/^I should get (\w+)$/, async (title) => {
+   const elemnt =await $("//span[text()='" + title +"']");
+    await elemnt.waitForExist({ timeout: 5000 });
+    await expect(elemnt).toBeExisting();
+});

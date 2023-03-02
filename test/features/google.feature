@@ -5,10 +5,10 @@ Feature: google test
     Given I navigate to google page
     Then I see the title is "Google"
     When I type <keyword> in input box 
-    #And  I click on search button  
-    # Then I should get <url>
+    When  I click on search button  
+    Then I should get <title>
 
      Examples:
-     | keyword  |   url                    | 
-     | aws      |  https://aws.amazon.com/ |
+     | keyword  |   title                    | 
+     | aws      |  Amazon.com        |
     # | aptitude |                       | 
