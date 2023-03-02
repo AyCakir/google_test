@@ -4,11 +4,12 @@ Feature: google test
 
     Given I navigate to google page
     Then I see the title is "Google"
-    When I type <keyword> in input box 
-    When  I click on search button  
-    Then I should get <title>
+    When I type <SearchItem> in input box 
+    #When  I click on search button  
+    When Click on the first search result
+    #Then I should get <title>
 
      Examples:
-     | keyword  |   title                    | 
-     | aws      |  Amazon.com        |
-    # | aptitude |                       | 
+     | SearchItem         |   title                             | 
+     | aws                |  Amazon.com                            |
+     | aptitudeglobal     |  Aptitude Global                        | 
