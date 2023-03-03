@@ -9,10 +9,11 @@ Given(/^I navigate to google page$/, async () => {
 
      await browser.url('https://www.google.com')
      await browser.maximizeWindow()
-    //  await browser.pause(3000)
-    //  const poup = await $('#L2AGLb')
-    //  if(poup.isDisplayed()){
-    //  await poup.click();}
+     await browser.pause(3000)
+     const poup = await $('#L2AGLb')
+     if(await poup.isDisplayed()){
+     await poup.click();}
+   
 
      
 
@@ -72,7 +73,7 @@ Then(/^I should get ([\w ./:]+)$/, async (expectedUrl) => {
   const actualUrl = await browser.getUrl();
   console.log(actualUrl); 
 
-  await browser.pause(10000);
+  await browser.pause(7000);
 
   await expect(browser).toHaveUrlContaining(expectedUrl);
   
