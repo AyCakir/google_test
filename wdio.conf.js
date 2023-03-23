@@ -217,7 +217,16 @@ exports.config = {
      * @param {Object}         browser      instance of created browser/device session
      */
     // before: function (capabilities, specs) {
-    // },
+
+        // wdio.conf.js
+   /* before: async () => {
+    await import('expect-webdriverio');
+    global.wdioExpect = global.expect;
+    const chai = await import('chai');
+    global.expect = chai.expect;
+    
+}*/
+   // },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
