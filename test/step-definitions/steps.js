@@ -1,4 +1,5 @@
 const { Given, When, Then, Before } = require('@wdio/cucumber-framework');
+const assert = require('assert');
 //const assert = require('assert');
 //const pages = {
    // login: LoginPage
@@ -9,7 +10,7 @@ Given(/^I navigate to google page$/, async () => {
 
      await browser.url('https://www.google.com')
      await browser.maximizeWindow()
-     await browser.pause(3000)
+    // await browser.pause(3000)
 
      const poup = await $('#L2AGLb')
      if(await poup.isDisplayed()){
@@ -65,6 +66,23 @@ Then (/^I see the Gmail module on the right-hand side of the page$/, async() => 
 
    
    });
+   Then (/^I'm able to click on the "Sign In" button$/, async () => {
+
+    await browser.pause(3000);
+   // const SignInBtn = await $('//img[@class="gb_ie"]');
+    const signInButton = $('a[href*="accounts.google.com"]');
+    signInButton.waitForExist();
+    expect(signInButton).toBePresent;
+
+
+});
+Then(/^I see the "I'm Feeling Lucky" button$/, async () => {
+    const luckyBtn = await $('input[name="btnI"]');
+    assert(luckyBtn.isDisplayed(), 'Expected "I\'m Feeling Lucky" button to be displayed');
+});
+
+
+
 
 
 
@@ -82,14 +100,40 @@ Then (/^I see the Gmail module on the right-hand side of the page$/, async() => 
 });
 
 
+
 Then(/^I should see the following links on the right-hand side bottom of the page$/, async (dataTable) => {
-    const links =  await dataTable.rawTable.map((row) => row[0].trim());
-    const actualLinks = await $$('div[role="navigation"] a').map((link) => link.getText().trim());
-    expect(actualLinks).toEqual(links);
+   
+    const linksOfRight =  await dataTable.rawTable.map((row) => row[0].trim());
+    const actualLinks = await $$('.iTjxkf a.pHiOh').map((link) => link.getText());
+    //await browser.debug();
+    console.log('..........',actualLinks);
+     expect(actualLinks).toEqual(linksOfRight);
+    
 });
 
 
+Then (/^I should see Settings is displayed$/, async () => {
+    const setting = await $('//*[@jsname="LgbsSe"]');
+    await expect(setting).isDisplayed;
+})
 
+
+
+When(/^I verify the following links on the Google page$/, async (data) => {
+    const links = data.rawTable;
+
+    for (let i = 1; i < links.length; i++) {
+        const linkText = links[i][0];
+        const linkSelector = `//*[@class="KxwPGc AghGtd"]`;
+        const link = await $(linkSelector);
+        const href = await link.getAttribute('href');
+        console.log(href);
+        
+
+    }
+
+
+});
 
 When(/^I type ([\w ./:]+) in input box$/, async (text) => {
     await browser.pause(10000);
@@ -104,24 +148,13 @@ When(/^I type ([\w ./:]+) in input box$/, async (text) => {
 
 
 When(/^Click on the first search result$/, async () => {
-    const ele = await $("//div[@id='search']//div[@class='g']//a[@href]"
-    )
+    const ele = await $("//div[@id='search']//div[@class='g']//a[@href]")
     console.log(ele.text)
     ele.click();
 
 })
 
-/*
 
-When (/^I click on search button$/, async() => {
-      
-const searchbtn = await $('.UUbT9 input[name="btnK"]');
-await searchbtn.waitForClickable({ timeout: 10000 });
- await searchbtn.click();
- await browser.pause(5000);
-
-})
-*/
 
 Then(/^I should get ([\w ./:]+)$/, async (expectedUrl) => {
  
